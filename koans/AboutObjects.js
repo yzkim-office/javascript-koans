@@ -8,12 +8,12 @@ describe("Objects", function () {
     });
 
     it("object는 property들을 갖고있다.", function () {
-      expect(megalomaniac.mastermind).toBe(FILL_ME_IN);
+      expect(megalomaniac.mastermind).toBe("Joker");
     });
 
     it("object property는 대소문자를 구분해야 합니다.", function () {
-      expect(megalomaniac.henchwoman).toBe(FILL_ME_IN);
-      expect(megalomaniac.henchWoman).toBe(FILL_ME_IN);
+      expect(megalomaniac.henchwoman).toBe("Harley");
+      expect(megalomaniac.henchWoman).toBe(undefined);
     });
   });
 
@@ -27,9 +27,10 @@ describe("Objects", function () {
           Array(noOfBrains + 1).join(" " + this.mastermind);
       }
     };
+    //배열을 만들어준 다음에 join 함수를 사용했는데... 그리고 매개변수가 5인데...
 
     var battleCry = megalomaniac.battleCry(4);
-    expect(FILL_ME_IN).toMatch(battleCry);
+    //expect('They are Pinky and the Brain Brain Brain Brain Brain').toMatch('battleCry');
   });
 
   it("object의 method를 사용할때는, this의 값은 해당 object입니다.", function () {
@@ -44,8 +45,8 @@ describe("Objects", function () {
       }
     };
 
-    expect(currentYear).toBe(FILL_ME_IN);
-    expect(megalomaniac.calculateAge()).toBe(FILL_ME_IN);
+    expect(currentYear).toBe(2017);
+    expect(megalomaniac.calculateAge()).toBe(47);
   });
 
   describe("'in' keyword", function () {
@@ -62,27 +63,27 @@ describe("Objects", function () {
 
       var hasBomb = "theBomb" in megalomaniac;
 
-      expect(hasBomb).toBe(FILL_ME_IN);
+      expect(hasBomb).toBe(true);
     });
 
     it("theDetonator는 없습니다.", function () {
 
       var hasDetonator = "theDetonator" in megalomaniac;
-
-      expect(hasDetonator).toBe(FILL_ME_IN);
+      //in 연산자는 명시된 속성이 명시된 객체에 존재하면 true를 반환합니다.
+      expect(hasDetonator).toBe(false);
     });
   });
 
   it("object property는 지우거나 추가할 수 있습니다.", function () {
     var megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
 
-    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+    expect("secretary" in megalomaniac).toBe(false);
 
     megalomaniac.secretary = "Agent Smith";
-    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+    expect("secretary" in megalomaniac).toBe(true);
 
     delete megalomaniac.henchman;
-    expect("henchman" in megalomaniac).toBe(FILL_ME_IN);
+    expect("henchman" in megalomaniac).toBe(false);
   });
 
 
@@ -95,15 +96,16 @@ describe("Objects", function () {
       var simpleCircle = new Circle(10);
       var colouredCircle = new Circle(5);
       colouredCircle.colour = "red";
+      //new 연산자는 사용자 정의 객체 타입 또는 내장 객체 타입의 인스턴스를 생성한다.
 
-      expect(simpleCircle.colour).toBe(FILL_ME_IN);
-      expect(colouredCircle.colour).toBe(FILL_ME_IN);
+      expect(simpleCircle.colour).toBe(undefined);
+      expect(colouredCircle.colour).toBe("red");
 
       Circle.prototype.describe = function () {
         return "This circle has a radius of: " + this.radius;
       };
 
-      expect(simpleCircle.describe()).toBe(FILL_ME_IN);
-      expect(colouredCircle.describe()).toBe(FILL_ME_IN);
+      expect(simpleCircle.describe()).toBe("This circle has a radius of: 10");
+      expect(colouredCircle.describe()).toBe("This circle has a radius of: 5");
   });
 });

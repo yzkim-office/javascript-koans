@@ -4,7 +4,7 @@ describe("Mutability", function() {
     var aPerson = {firstname: "John", lastname: "Smith" };
     aPerson.firstname = "Alan";
 
-    expect(aPerson.firstname).toBe(FILL_ME_IN);
+    expect(aPerson.firstname).toBe("Alan");
   });
 
   it("Constructor를 이용하여 만든 object의 property도 수정 가능합니다.", function () {
@@ -16,7 +16,7 @@ describe("Mutability", function() {
     var aPerson = new Person ("John", "Smith");
     aPerson.firstname = "Alan";
 
-    expect(aPerson.firstname).toBe(FILL_ME_IN);
+    expect(aPerson.firstname).toBe("Alan");
   });
 
   it("prototype의 method도 수정 가능합니다.", function () {
